@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import { PatientsService } from './patients/patients.service';
 import { RemindersService } from './reminders/reminders.service';
 import { LLMService } from './llm/llm.service';
-import { FonnteService } from './fonte/fonte.service';
+import { FonnteService } from './fonnte/fonnte.service';
 
 @Controller()
 export class AppController {

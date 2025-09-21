@@ -8,7 +8,7 @@ import { PatientsModule } from './patients/patients.module';
 import { RemindersModule } from './reminders/reminders.module';
 import { ContentModule } from './content/content.module';
 import { LLMModule } from './llm/llm.module';
-import { FonnteModule } from './fonte/fonte.module';
+import { FonnteModule } from './fonnte/fonnte.module';
 import { WebSocketModule } from './websocket/websocket.module';
 
 @Module({

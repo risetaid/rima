@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { FonnteService } from './fonte.service';
+import { FonnteService } from './fonnte.service';
 
 @Module({
   providers: [FonnteService],
