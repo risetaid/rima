@@ -61,4 +61,8 @@ export class PatientsService {
     patient.healthNotes = patient.healthNotes.filter(note => !noteIds.includes(note._id.toString()));
     return patient.save();
   }
+
+  async findByWhatsapp(whatsapp: string) {
+    return this.patientModel.findOne({ whatsapp });
+  }
 }

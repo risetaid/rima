@@ -7,6 +7,9 @@ import { AuthModule } from './auth/auth.module';
 import { PatientsModule } from './patients/patients.module';
 import { RemindersModule } from './reminders/reminders.module';
 import { ContentModule } from './content/content.module';
+import { LLMModule } from './llm/llm.module';
+import { FonnteModule } from './fonte/fonte.module';
+import { WebSocketModule } from './websocket/websocket.module';
 
 @Module({
   imports: [
@@ -16,6 +19,9 @@ import { ContentModule } from './content/content.module';
     PatientsModule,
     RemindersModule,
     ContentModule,
+    LLMModule,
+    FonnteModule,
+    WebSocketModule,
   ],
   controllers: [AppController],
   providers: [AppService],

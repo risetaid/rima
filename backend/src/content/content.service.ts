@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import * as ytdl from 'ytdl-core';
 import { Article, ArticleDocument } from './article.schema';
 import { Video, VideoDocument } from './video.schema';
 import { UserDocument } from '../schemas/user.schema';
@@ -38,9 +39,15 @@ export class ContentService {
 
   // Videos
   async createVideo(createVideoDto: any, user: UserDocument) {
-    // TODO: Fetch metadata with ytdl-core
+    const info = await ytdl.getInfo(createVideoDto.url);
+    const metadata = {
+      title: info.videoDetails.title,
+      thumbnail: info.videoDetails.thumbnails[0]?.url || '',
+      duration: info.videoDetails.lengthSeconds.toString(),
+    };
     return this.videoModel.create({
       ...createVideoDto,
+      ...metadata,
       createdBy: user._id,
     });
   }

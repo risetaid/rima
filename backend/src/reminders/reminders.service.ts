@@ -51,13 +51,17 @@ export class RemindersService {
     return this.reminderModel.findOneAndDelete(query);
   }
 
+  async findActiveForPatient(patientId: string) {
+    return this.reminderModel.findOne({ patientId, status: 'sent' });
+  }
+
   // Placeholder for cron
   async checkDueReminders() {
     const now = new Date();
     const dueReminders = await this.reminderModel.find({
       status: 'scheduled',
       datetime: { $lte: now },
-    });
+    }).populate('patientId');
     // Logic to send via Fonnte, update status
     // For now, just update to sent
     for (const reminder of dueReminders) {
