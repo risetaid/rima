@@ -52,7 +52,7 @@ export class PatientsService {
 
   async addHealthNote(id: string, note: { datetime: Date; desc: string }, user: UserDocument) {
     const patient = await this.findOne(id, user);
-    patient.healthNotes.push(note);
+    patient.healthNotes.push(note as any);
     return patient.save();
   }
 
