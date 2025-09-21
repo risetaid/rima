@@ -10,6 +10,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'patients/:id',
+    loadComponent: () => import('./pages/patient-details/patient-details.component').then(m => m.PatientDetailsComponent),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'reminders',
     loadComponent: () => import('./pages/reminders/reminders.component').then(m => m.RemindersComponent),
     canActivate: [AuthGuard],
