@@ -79,5 +79,10 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "trustedDependencies": [
+    "@nestjs/core",
+    "browser-tabs-lock",
+    "unrs-resolver"
+  ]
 }
