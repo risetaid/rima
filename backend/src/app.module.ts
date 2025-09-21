@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User, UserSchema } from './schemas/user.schema';
@@ -13,8 +15,13 @@ import { WebSocketModule } from './websocket/websocket.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGO_URL || 'mongodb://localhost:27017/rima'),
+    MongooseModule.forRoot(
+      process.env.MONGO_URL || 'mongodb://localhost:27017/rima',
+    ),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
     AuthModule,
     PatientsModule,
     RemindersModule,
