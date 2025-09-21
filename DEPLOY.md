@@ -11,7 +11,7 @@ Dari satu repo ini, deploy 2 services terpisah: satu untuk backend, satu untuk f
 3. Add Backend service:
    - Choose GitHub, connect repo ini
    - Set root directory: `backend/`
-   - Build command: `bun install`
+   - Build command: `bun install && bun run build`
    - Start command: `bun run start:prod`
    - Set env vars dari .env (MONGO_URL, AUTH0_*, ANTHROPIC_API_KEY, FONNTE_TOKEN, PORT)
 

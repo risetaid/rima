@@ -4,6 +4,7 @@ import { PatientsService } from './patients/patients.service';
 import { RemindersService } from './reminders/reminders.service';
 import { LLMService } from './llm/llm.service';
 import { FonnteService } from './fonnte/fonnte.service';
+import { PatientDocument } from './patients/patient.schema';
 
 @Controller()
 export class AppController {
@@ -45,7 +46,7 @@ export class AppController {
         await this.fonnteService.sendMessage(sender, 'Please reply with yes or no.');
       }
     } else {
-      const reminder = await this.remindersService.findActiveForPatient(patient._id);
+      const reminder = await this.remindersService.findActiveForPatient((patient as any)._id.toString());
       if (reminder) {
         const { intent } = await this.llmService.classifyConfirmation(message);
         if (intent === 'done') {

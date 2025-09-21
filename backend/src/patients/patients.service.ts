@@ -58,7 +58,7 @@ export class PatientsService {
 
   async bulkDeleteNotes(id: string, noteIds: string[], user: UserDocument) {
     const patient = await this.findOne(id, user);
-    patient.healthNotes = patient.healthNotes.filter(note => !noteIds.includes(note._id.toString()));
+    patient.healthNotes = patient.healthNotes.filter(note => note._id && !noteIds.includes(note._id.toString()));
     return patient.save();
   }
 

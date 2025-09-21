@@ -21,8 +21,8 @@ export class Patient {
   @Prop({ enum: ['pending', 'verified', 'failed'], default: 'pending' })
   verificationStatus: string;
 
-  @Prop([{ datetime: { type: Date }, desc: { type: String } }])
-  healthNotes: { datetime: Date; desc: string }[];
+   @Prop([{ datetime: { type: Date }, desc: { type: String }, _id: true }])
+   healthNotes: { _id?: mongoose.Types.ObjectId; datetime: Date; desc: string }[];
 
   @Prop({ default: Date.now })
   createdAt: Date;
