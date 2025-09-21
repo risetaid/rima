@@ -1,0 +1,8 @@
+<nav class="bg-gray-800 text-white w-64 min-h-screen p-4">
+  <ul class="space-y-2">
+    <li><a routerLink="/patients" routerLinkActive="bg-gray-700" class="block p-2 rounded">Patients</a></li>
+    <li><a routerLink="/reminders" routerLinkActive="bg-gray-700" class="block p-2 rounded">Reminders</a></li>
+    <li><a routerLink="/content" routerLinkActive="bg-gray-700" class="block p-2 rounded">Content</a></li>
+    <li *ngIf="auth.user$ | async as user && user.role === 'Developer'"><a routerLink="/admin" routerLinkActive="bg-gray-700" class="block p-2 rounded">Admin</a></li>
+  </ul>
+</nav>

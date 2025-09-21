@@ -1,0 +1,7 @@
+<header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+  <h1 class="text-xl font-bold">RIMA</h1>
+  <div class="flex items-center space-x-4">
+    <p *ngIf="auth.user$ | async as user" class="text-sm">{{ user.email }}</p>
+    <button (click)="auth.logout({ logoutParams: { returnTo: window.location.origin } })" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+  </div>
+</header>
