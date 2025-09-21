@@ -2,11 +2,13 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './schemas/user.schema';
+import { RemindersService } from './reminders/reminders.service';
 
 @Injectable()
 export class AppService implements OnModuleInit {
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
+    private remindersService: RemindersService,
   ) {}
 
   async onModuleInit() {
@@ -24,5 +26,9 @@ export class AppService implements OnModuleInit {
 
   getHello(): string {
     return 'Hello World!';
+  }
+
+  async cron() {
+    return this.remindersService.checkDueReminders();
   }
 }
